@@ -1,0 +1,222 @@
+
+<!DOCTYPE HTML>
+ <head> 
+  <!--created by drhalf and people in github if they helped or not idk-->
+  <meta charset=UTF-8>
+  <meta name="viewport" content="width-device=width, intial-scale-1.0">
+  <link rel="icon" type="image/x-icon" href="https://gdbrowser.com/assets/crown-daily.png">
+  <title>Daily Level</title>
+      <br>
+    <div class="back-arrow">
+      <a href="http://darvlic.xyz/" target="_blank" rel="noopener noreferer">
+      <img src="https://i.postimg.cc/W3LjphpR/menuleft.png" width="30" alt="back arrow" />
+     </a>
+     </div>
+      <div class="daily-text">
+        <img src="https://i.postimg.cc/4d7svqwc/logo-Daily-Level-(1).png" width="500" alt="darvlic.xyz logo">  
+      </div>
+      
+  
+    <style>
+     @import url('https://fonts.cdnfonts.com/css/pusab');
+
+      .back-arrow img {
+        overflow: hidden;
+        object-fit: cover;
+        transition: transform 0.3 ease;
+      }
+
+      .back-arrow img:hover {
+        transform: scale(1.2);
+      }
+      
+      body {
+        background-image: url('https://i.postimg.cc/3N2QP9j6/parallaxgdbg.png');
+        background-color: rgba(0, 0, 0, 0.15);
+        background-blend-mode: darken;
+        background-size: 750px;
+
+        display: grid;
+        place-items: center;
+
+        font-family: 'Pusab';
+      }
+
+      .daily-text {
+        margin: 20px;
+      }
+
+      .level-info {
+        display: grid;
+        place-items: center;
+
+        margin-top: 0px;
+        margin-bottom: 0px;
+        line-height: 0.1;
+         }
+
+
+      .faces img {
+        overflow: hidden;
+        object-fit: cover;
+        transition: 0.2;
+      }
+
+      .faces img:hover {
+        transform: scale(1.15);
+      }
+      
+      .play-button img {
+        overflow: hidden;
+        object-fit: cover;
+        transition: 0.2;
+      }
+
+      .play-button img:hover {
+        transform: scale(1.1);
+      }
+
+      h2 {
+        color: white;
+        margin-bottom: 5px;
+      }
+
+      .faces {
+        display:grid;
+        place-items: center;
+      }
+
+      p {
+        display: grid;
+        place-items: center;
+        color: #FFCCCB;
+      }
+
+      .dark-white {
+        color: #D1D1D1;
+        margin-top: 0px;
+      }
+
+      .star-rating {
+        color: #F4BB44;
+      }
+
+    </style>
+ </head>
+  <body>
+    <script>
+    async function getDaily() {
+        try {
+            const response = await fetch('https://gdbrowser.com/api/level/daily');
+            const data = await response.json();
+
+            document.querySelector('.star-rating h3').innerHTML = `${data.stars} stars ★`;
+            document.querySelector('h2').innerText = data.name;
+            document.querySelector('.dark-white h3').innerText = `by ${data.author}`;
+            document.querySelector('.dark-white p').innerText = data.id;
+            
+            // why did i do the song and not the length </3
+
+            document.querySelector('[style="color: #89CFF0"]').innerText = data.songName;
+            document.querySelector('[style="color: #32CD32"]').innerHTML = `${data.downloads.toLocaleString()} ⮮`;
+            document.querySelector('[style="color: #FFBF34"]').innerHTML = `${data.likes.toLocaleString()} 👍`;
+    
+            document.querySelector('.play-button a').href = `https://gdbrowser.com/${data.id}`;
+
+        } catch (error) {
+            console.error("cant find data:", error);
+        }
+    }
+
+    getDaily();
+</script>
+    </script>
+
+    <div class="faces">
+      <img id="difficulty-face" src="https://gdbrowser.com/assets/difficulties/unrated.png" width="90" alt="difficulty">
+    </div>
+  
+<script>
+    async function updateTND() {
+        try {
+            
+            const response = await fetch('https://gdbrowser.com/api/level/daily');
+            const data = await response.json();
+
+            document.getElementById('stars').innerText = `${data.stars} stars ★`;
+            document.getElementById('name').innerText = data.name;
+            document.getElementById('creator').innerText = `by ${data.author}`;
+            document.getElementById('id').innerText = data.id;
+            document.getElementById('song').innerText = data.songName;
+            document.getElementById('downloads').innerHTML = `${data.downloads.toLocaleString()} ⮮`;
+            document.getElementById('likes').innerHTML = `${data.likes.toLocaleString()} 👍`;
+            document.getElementById('play-link').href = `https://gdbrowser.com/${data.id}`;
+
+            const faceMap = {
+                0: "na.png", 1: "auto.png", 2: "easy.png", 3: "normal.png", 
+                4: "hard.png", 5: "hard.png", 6: "harder.png", 7: "hard.png", 
+                8: "insane.png", 9: "insane.png", 10: "demon-easy.png"
+            };
+
+            const faceImage = faceMap[data.stars] || "na.png";
+            document.getElementById('difficulty-face').src = `https://gdbrowser.com/assets/difficulties/${faceImage}`;
+
+        } catch (error) {
+            console.error("cant find data:", error);
+        }
+    }
+
+    // update to new daily
+    updateTND();
+</script>
+
+  <div class="level-info">
+   <div class="star-rating">
+     <h3 id="stars">[[stars]] stars ★</h3>
+   </div>
+
+    <h2 id="name">[[level name]</h2>
+    <div class="dark-white">
+     <h3 id="creator">by [[creator]]</h3>
+      <p id="id">[[id]]</p> 
+    </div>
+
+     <h3 id="song" style="color: #89CFF0">[[song id]]</h3>
+     <h3 id="downloads" style="color: #32CD32">[[downloads]] ⮮</h3>
+     <h3 id="likes" style="color: #FFBF34">[[likes]] 👍</h3>
+     <br>
+     
+      <br>
+    <div class="play-button">
+      <a id="play-link" href="https://gdbrowser.com/daily" target="_blank" rel="noopener noreferer"> 
+        <img src="https://i.postimg.cc/T3sDRMyy/play.png" width="65" alt="play daily">
+      </a>
+   </div>
+  </div>
+
+  <script>
+    async function getDaily() {
+        try {
+            const response = await fetch('https://gdbrowser.com/api/level/daily');
+            const data = await response.json();
+
+            document.getElementById('stars').innerText = `${data.stars} stars ★`;
+            document.getElementById('name').innerText = data.name;
+            document.getElementById('creator').innerText = `by ${data.author}`;
+            document.getElementById('id').innerText = `𝗜𝗗: ${data.id}`;
+            document.getElementById('song').innerText = data.songName;
+            document.getElementById('downloads').innerHTML = `${data.downloads.toLocaleString()} ⮮`;
+            document.getElementById('likes').innerHTML = `${data.likes.toLocaleString()} 👍`;
+            document.getElementById('play-link').href = `https://gdbrowser.com/${data.id}`;
+
+        } catch (error) {
+            console.error("cant find data", error);
+        }
+    }
+    
+    getDaily();
+  </script>
+ <script>
+  
+ </script>
+</body>
