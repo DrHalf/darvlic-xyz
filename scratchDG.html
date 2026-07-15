@@ -1,0 +1,145 @@
+
+<!DOCTYPE HTML>
+<div class="gd-textbox" id="dialogue-box">
+  <div class="portrait">
+    <img id="portrait-img" src="https://gdcolon.com/gdtextbox/resources/portraits/dialogIcon_013-uhd.png" width="80">
+  </div>
+  <div class="content">
+    <div id="speaker" style="font-size: 25px; margin-bottom: 5px;">SCRATCH</div>
+    <div class="subtitle" id="dialogue" style="font-size: 20px;">Oh.. how did you get here?</div>
+  </div>
+  
+  <!-- The clickable arrow -->
+  <div class="arrow-container">
+    <img src="https://gdbrowser.com/assets/arrow-left.png" id="next-arrow" onclick="nextMessage()" style="cursor: pointer; width: 30px;">
+  </div>
+</div>
+<style>
+  @import url('https://fonts.cdnfonts.com/css/pusab');
+
+  body {
+    background-color: black;
+
+    display: grid;
+    place-items: center;
+
+    display: flex;
+    justify-content: center
+  }
+
+  .subtitle {
+    color: #D1D1D1;
+  }
+
+  .gd-textbox {
+    background-color: #272D6B;
+    background-size: 100% 100%;
+    width: 700px;
+    height: 180px;
+    border: 5px solid #1F2455;
+
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-family: 'Pusab', sans-serif;
+
+  }
+
+  .arrow-container {
+    margin-left: 220px;
+
+    rotate: 270deg;
+  }
+
+  .portrait {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+  }
+</style>
+<script>
+  const dialogueLines = [
+    { 
+      name: "[[name]]", 
+      text: "[[dialouge text]]", 
+      img: "[[https img link]]" 
+    },
+    { 
+      name: "SCRATCH", 
+      text: "You found out the codes?", 
+      img: "https://gdcolon.com/gdtextbox/resources/portraits/dialogIcon_012-uhd.png"
+    },
+    { 
+      name: "SCRATCH", 
+      text: "Well, what am I supposed to do now?", 
+      img: "https://gdcolon.com/gdtextbox/resources/portraits/dialogIcon_008-uhd.png"
+    },
+    { 
+      name: "SCRATCH", 
+      text: "Oh yeah, RubRub CANNOT find out that I escaped his game...", 
+      img: "https://gdcolon.com/gdtextbox/resources/portraits/dialogIcon_027-uhd.png"
+    },
+    { 
+      name: "SCRATCH", 
+      text: "He would be mad...", 
+      img: "https://gdcolon.com/gdtextbox/resources/portraits/dialogIcon_026-uhd.png"
+    },
+    { 
+      name: "SCRATCH", 
+      text: "You already found this, So yeah...", 
+      img: "https://gdcolon.com/gdtextbox/resources/portraits/dialogIcon_027-uhd.png"
+    },
+    { 
+      name: "SCRATCH", 
+      text: "Should I let you through?", 
+      img: "https://gdcolon.com/gdtextbox/resources/portraits/dialogIcon_013-uhd.png"
+    },
+    { 
+      name: "SCRATCH", 
+      text: "You do look a bit scary.", 
+      img: "https://gdcolon.com/gdtextbox/resources/portraits/dialogIcon_008-uhd.png"
+    },
+    { 
+      name: "SCRATCH", 
+      text: "I guess I can, but gatekeeper might get mad...", 
+      img: "https://gdcolon.com/gdtextbox/resources/portraits/dialogIcon_011-uhd.png"
+    },
+    { 
+      name: "SCRATCH", 
+      text: "Oh well.", 
+      img: "https://gdcolon.com/gdtextbox/resources/portraits/dialogIcon_010-uhd.png"
+    },
+    { 
+      name: "SCRATCH", 
+      text: "Leave this place though, it's not that safe...", 
+      img: "https://gdcolon.com/gdtextbox/resources/portraits/dialogIcon_026-uhd.png"
+    },
+    { 
+      name: "SCRATCH", 
+      text: "What place?", 
+      img: "https://gdcolon.com/gdtextbox/resources/portraits/dialogIcon_008-uhd.png"
+    },
+    { 
+      name: "SCRATCH", 
+      text: "...", 
+      img: "https://gdcolon.com/gdtextbox/resources/portraits/dialogIcon_009-uhd.png"
+    },
+  ];
+
+  let currentIndex = 0;
+
+  function nextMessage() {
+    if (currentIndex < dialogueLines.length - 1) {
+      currentIndex++;
+      
+      document.getElementById('speaker').innerText = dialogueLines[currentIndex].name;
+      document.getElementById('dialogue').innerText = dialogueLines[currentIndex].text;
+
+      document.getElementById('portrait-img').src = dialogueLines[currentIndex].img;
+    } else {
+      document.getElementById('dialogue-box').style.display = 'none';
+      window.open('http://darvlic.xyz/glubfub.html', '_self');
+    }
+  }
+</script>
