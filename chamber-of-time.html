@@ -1,0 +1,270 @@
+<!DOCTYPE HTML>
+ <head>
+  <meta charset="UTF-8">
+ <!-- github pages should work better -->
+    <title>Chamber of Time?</title>
+    <link rel="icon" type="image/x-icon" href="https://images.steamusercontent.com/ugc/2045237049280773895/8445398C216F900E7A22B50C1C4BFB49AFDBAD5F/">
+  <br>
+  <br>
+  <br>
+ <div id="header" class="title">
+  <img src="https://i.postimg.cc/254f7NDv/gold-Chamber-of-time.png" width="480" alt="chamber of time">
+</div>
+    <audio autoplay loop>
+      <source src="chamber-of-time.mp3" type="audio/mpeg">
+    </audio>
+  <style>
+    @import url('https://fonts.cdnfonts.com/css/pusab');
+
+    body {
+      background-color: #360700;
+
+      display: grid;
+      text-align: center;
+      place-items: center;
+      
+      font-family: 'Pusab';
+    }
+
+    .gridspace {
+      display: grid;
+      text-align: center;
+      place-items: center;
+    }
+
+    .title {
+      margin-top: 50px;
+    }
+
+    h1 {
+      color: white;
+    }
+
+    .talkingW {
+      color: white;
+    }
+
+    #gatekeeper {
+      margin-top: 30px;
+    }
+
+    #gatekeeper img {
+      overflow: hidden;
+
+      transition: 0.2;
+    }
+
+    #gatekeeper img:hover {
+      transform: scale(1.1);
+    }
+
+    .chest {
+      opacity: 0.6;
+    }
+
+    #chest img {
+      overflow: hidden;
+
+      transition: 0.2;
+    }
+
+    #chest img:hover {
+      transform: scale(1.1);
+    }
+
+    .hints {
+      color: var(--hint-color, white);
+    }
+
+    #chest {
+      opacity: 0.6;
+    }
+    
+    #chest {
+      display: none;
+      margin-top: 15px;
+    }
+
+    .hints {
+      color: #B9FF66;
+    }
+
+    .answering {
+      color: #00FFFF;
+    }
+
+    @keyframes flash {
+      0% { opacity: 0; }
+      50% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+  </style>
+  <div class="gateTXT">
+      <h1 id="message">Why have I been awoken?</h1>
+  </div>
+  <script>      
+  function gatekeeperClick() {
+        
+  const messages = [
+  '*farts*',
+  'Chicken, Burning Chicken...',
+  'Oh, that yummy steak!',
+  'Ton 619?',
+  'Not what I was hoping for...',
+  'None will pass',
+  'Go get a bass',
+  'The key has been stolen. Maybe by colon? But what is it..', 
+  'I guarantee, ArchMC sucks.',
+  'It murmurs in the dark, waiting to bark', 
+  "I don't show my answers clearly",
+  'Go away!',
+  '...',
+  'Owner of this game, having his reign', 
+  'RubRub or GitHub?',
+  "Don't test my patience...",
+  'How long will you keep this up?',
+  'Yes, it is PeakCreatorGoal',
+  "Don't you have something else to do?",
+  'Hot score! Wait, who is Potbor?',  
+  'Peppermint',
+  "A mountain that's firey, if you see one, write it in your diary!",
+  'If you cannot find the good, then be the good',
+  ];
+
+  const greenMessages = [
+  'The key has been stolen. Maybe by colon? But what is it..',
+  'It murmurs in the dark, waiting to bark',
+  'Owner of this game, having his reign',
+  'Hot score! Wait, who is Potbor?',
+  'A mountain that\'s firey, if you see one, write it in your diary!'
+  ];
+
+  const rIDX = Math.floor(Math.random() * messages.length);
+  const talkingMSG = messages[rIDX];
+  const messageHSV = document.getElementById("message");
+
+  messageHSV.innerText = talkingMSG;
+
+  messageHSV.className = 'talkingW';
+
+  if (greenMessages.includes(talkingMSG)) {
+    messageHSV.classList.add('hints');
+  } else {
+    messageHSV.classList.remove('hints');
+   }
+
+  const replyingshit = {
+    "Puncuation": "I always use them",
+    "Silence": "It has just been broken...",
+    "DrHalf": "The coolest person ever",
+    "Shopkeeper": "Are they robots too?",
+    "Volcano": "I wished I lived near one...",
+  };
+
+  gatekeeper.addEventListener('click', function() {
+    const inputBX = typeINP.value;
+    const messageBX = document.getElementById("message");
+
+    if (replyingshit.hasOwnProperty(inputBX)) {
+        messageBX.innerText = replyingshit[inputBX];
+        messageBX.className = 'answering';
+        chest.style.display = 'grid';
+        let cl = true;
+    }
+      });
+  }
+
+
+  </script>
+  <br>
+  <br>
+
+  <input type="text" id="typingINPT" style="background-color: black; width: 300px; height:65px;
+   color: white; font-family:'Pusab'; font-size: 30px; 
+   text-align: center;" placeholder="...">
+
+  <!-- OG <input type="text" style="background-color: black; width: 300px; height:65px;
+   color: white; font-family:'Pusab'; font-size: 30px; 
+   text-align: center;" id="answer" placeholder="...">-->
+
+    <div id="gatekeeper">
+  <img src="https://images.steamusercontent.com/ugc/2045237049280773895/8445398C216F900E7A22B50C1C4BFB49AFDBAD5F/" width="135"
+  onclick="gatekeeperClick()" alt="gatekeeper">
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+  <div id="chest">
+   <a href="http://darvlic.xyz/scratchDG.html" target="_self" rel="noopener noreferer">
+    <img src="https://gdcolon.com/gdsave/assets/chests/gold.png"
+    width="100" style="cursor: pointer" alt="chest">
+  </a>
+  </div>
+</head>
+  <body>
+
+  <script>
+    const typeINP = document.getElementById('typingINPT');
+    const chest = document.getElementById('chest');
+    let cl = false;
+
+    const gatekeeper = document.getElementById('gatekeeper');
+    
+    gatekeeper.addEventListener('click', function(chestApply) {
+
+        // capitals
+        if (typeINP.value === "Puncuation") {
+          chest.style.display = 'block';
+          let cl = true;
+        }
+        if (typeINP.value === "Silence") {
+          chest.style.display = 'block';
+          let cl = true;
+        }
+        if (typeINP.value === "DrHalf") {
+          chest.style.display = 'block';
+          let cl = true;
+        }
+        if (typeINP.value === "Shopkeeper") {
+          chest.style.display = 'block';
+          let cl = true;
+        }
+        if (typeINP.value === "Volcano") {
+          chest.style.display = 'block';
+          let cl = true;
+        }
+
+        // non capital
+        if (typeINP.value === "puncuation") {
+          chest.style.display = 'block';
+          let cl = true;
+        }
+        if (typeINP.value === "silence") {
+          chest.style.display = 'block';
+          let cl = true;
+        }
+        if (typeINP.value === "drhalf") {
+          chest.style.display = 'block';
+          let cl = true;
+        }
+        if (typeINP.value === "Drhalf") {
+          chest.style.display = 'block';
+          let cl = true;
+        }
+        if (typeINP.value === "shopkeeper") {
+          chest.style.display = 'block';
+          let cl = true;
+        }
+        if (typeINP.value === "volcano") {
+          chest.style.display = 'block';
+          let cl = true;
+        }
+      }
+    );
+  </script>
+  </body>
+  
